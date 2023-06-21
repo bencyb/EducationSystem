@@ -1,0 +1,152 @@
+{% include 'adminheader.html' %}
+<br><br><br><br><br>
+<style type="text/css">
+        table{
+            width: 70%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+            background-color: white;
+        }
+        th{
+            width: 20%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        tr{
+            width: 50%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        td{
+            width: 60%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        input[type=text]
+        {
+            width:100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        input[type=email]
+        {
+            width:100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        textarea
+        {
+            width:100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        input[type=submit]
+        {
+            width: 30%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        </style>
+
+<body>	
+<h1 align="center">Head of the Department</h1><br>
+	<form method="post">
+		<center>
+{% if data['updateprte'] %}
+ <table  align="Center">
+            <tr class="tr">
+                <th>Department</th>
+                <td class="td">
+                    <input type="text" name="dname" readonly="" value="{{data['updateprte'][0]['dep_name']}}">
+                </td>
+            </tr>
+           <tr class="tr">
+              <th>Name</th>
+              <td class="td">
+                <input type="text" name="name" value="{{data['updateprte'][0]['hod_name']}}" >
+              </td>
+            </tr>
+            <tr class="tr">
+              <th>Address</th>
+              <td class="td">
+                <textarea name="address" required="">
+                  {{data['updateprte'][0]['hod_address']}}
+                </textarea>
+              </td>
+            </tr>
+            <tr class="tr">
+              <th>Phone</th>
+              <td class="td">
+                <input type="text" name="phone" value="{{data['updateprte'][0]['hod_phone']}}" pattern="[0-9]{10}">
+              </td>
+            </tr>
+            <tr class="tr">
+              <th>Email</th>
+              <td class="td">
+                <input type="email" name="email" value="{{data['updateprte'][0]['hode_email']}}">
+              </td>
+            </tr>
+            <tr class="tr">
+                <td colspan="2" align="center" class="td">
+                  <input type="submit" name="update" value="EDIT" class="btn btn-primary">
+                </td>
+            </tr>
+           </table>
+{% else %}
+	<table border="1">
+		<tr>
+			<th>Department Name</th>
+			<th>HOD Name</th>
+			<th>Addresss</th>
+            <th>Phone</th>
+            <th>Email</th>
+		</tr>
+		{% for row in data['ho'] %}
+		<tr>
+			<td>{{row['dep_name']}}</td>
+			<td>{{row['hod_name']}}</td>
+			<td>{{row['hod_address']}}</td>
+            <td>{{row['hod_phone']}}</td>
+            <td>{{row['hode_email']}}</td>
+		     <td>
+			   <a href="?action=update&id={{row['hod_id']}}&id1={{row['login_id']}}" class="btn btn-primary" style="width:120px; height: 30px;">Update</a>
+			   <a href="?action=delete&id={{row['hod_id']}}&id1={{row['login_id']}}" class="btn btn btn-danger" style="width:120px; height: 30px;"> Delele </a>
+			</td>
+		</tr>
+        {% endfor %}
+		</tr>
+	</table> 
+	</center>
+{% endif %}
+</form>
+</body>
+<br><br>
+{% include 'footer.html' %}

@@ -1,0 +1,97 @@
+{% include 'studentheader.html'%}
+<br>
+<br>
+<br>
+<br>
+<style type="text/css">
+        table{
+            width: 70%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+            background-color: white;
+        }
+        th{
+            width: 20%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        tr{
+            width: 50%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        td{
+            width: 20%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        input[type=text]{
+            width: 90%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        textarea{
+            width: 90%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        input[type=date]{
+            width: 90%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+
+        }
+        input[type=submit]
+        {
+            width: 30%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        </style>
+<body>
+    <br><br>
+    <h1 align="center"><font size="10" color="blue">Submit My Task</font></h1><br>
+    <form method="post" enctype="multipart/form-data">
+        <table  align="center">
+            <tr>
+                <th>Upload File</th>
+                <td>
+                <input type="file" name="files" required="">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" name="submit" value="submit"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+{% include 'footer.html' %}

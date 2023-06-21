@@ -1,0 +1,125 @@
+{% include 'adminheader.html' %}
+ <br><br><br><br>
+ <style type="text/css">
+        table{
+            width: 55%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+            background-color: white;
+        }
+        th{
+            width: 20%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        tr{
+            width: 50%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        td{
+            width: 60%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        input[type=text]
+        {
+            width:100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        input[type=date]
+        {
+            width:100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        textarea
+        {
+            width:100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        select
+        {
+            width:100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        input[type=email]
+        {
+            width:100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        input[type=password]
+        {
+            width:100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        input[type=submit]
+        {
+            width: 30%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+</style> 
+
+    <body>
+        <form method="post">
+<div></div>
+          <h1 align="center"><font size="20" color="blue">Mark Attendence</font></h1><br>
+           <table  align="Center">
+            <tr class="tr">
+              <th>Attendence</th>
+              <td class="td">
+                <input type="radio" name="attendence" required="" value="Present">Present
+                <input type="radio" name="attendence" required="" value="Absent">Absent
+              </td>
+            </tr>
+            <tr class="tr">
+              <td colspan="2" align="center" class="td">
+                  <input type="submit" name="submit" value="submit" class="btn btn-primary">
+              </td>
+            </tr>
+           </table>
+            
+        </form>
+
+
+{% include 'footer.html' %}

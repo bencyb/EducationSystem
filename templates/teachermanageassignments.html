@@ -1,0 +1,184 @@
+{% include 'teacherheader.html'%}
+<br>
+<br>
+<br>
+<br>
+<style type="text/css">
+        table{
+            width: 70%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+            background-color: white;
+        }
+        th{
+            width: 20%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        tr{
+            width: 50%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        td{
+            width: 20%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        input[type=text]{
+            width: 90%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        textarea{
+            width: 90%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        input[type=date]{
+            width: 90%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+
+        }
+        input[type=submit]
+        {
+            width: 30%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        </style>
+<body>
+    {% if data['updassign'] %}
+    <h1 align="center"><font size="10" color="blue">Assignments</font></h1><br>
+    <form method="post">
+        <table  align="center">
+            <tr>
+                <th>Title</th>
+                <td><input type="text" name="title" required="" placeholder="Enter Title" value="{{data['updassign'][0]['title']}}"></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+            <td><textarea name="des" required="" placeholder="Enter Description"> {{data['updassign'][0]['description']}}</textarea></td>
+            </tr>
+            <tr>
+                <th>Assignment Date</th>
+                <td><input type="date" name="adate" required=""  value="{{data['updassign'][0]['ass_date']}}"></td>
+            </tr>
+            <tr>
+                <th>Last Date of Submission</th>
+                <td><input type="date" name="ldate" required=""  value="{{data['updassign'][0]['last_date_sub']}}"></td>
+            </tr>
+            <tr>
+                <th>Maximum Mark</th>
+                <td><input type="text" name="mark" required="" placeholder="Enter Maximum Mark"  value="{{data['updassign'][0]['max_mark']}}"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" name="update" value="Update"></td>
+            </tr>
+        </table>
+        </form>
+
+{% else %}
+	<br><br>
+	<h1 align="center"><font size="10" color="blue">Assignments</font></h1><br>
+	<form method="post">
+		<table  align="center">
+             {% if data['updateprt'] %}
+            <tr>
+                <th>Subject Name </th>
+                <td>
+                <input type="text" name="cname" 
+                value="{{data['updateprt'][0]['sub_name']}}" readonly=""></td>
+                {% endif %}
+            </tr>
+			<tr>
+				<th>Title</th>
+				<td><input type="text" name="title" required="" placeholder="Enter Title"></td>
+			</tr>
+			<tr>
+				<th>Description</th>
+			<td><textarea name="des" required="" placeholder="Enter Description"></textarea></td>
+			</tr>
+			<tr>
+				<th>Assignment Date</th>
+				<td><input type="date" name="adate" required="" ></td>
+			</tr>
+			<tr>
+				<th>Last Date of Submission</th>
+				<td><input type="date" name="ldate" required="" ></td>
+			</tr>
+			<tr>
+				<th>Maximum Mark</th>
+				<td><input type="text" name="mark" required="" placeholder="Enter Maximum Mark"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit" name="submit" value="submit"></td>
+			</tr>
+		</table>
+		</form>
+        <br><br><br>
+        <form method="post">
+        <table  align="center" border="1">
+                <h1 align="center"><font size="10" color="blue">Assignments</font></h1>
+                <tr>
+                    <th>Name</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Assignment Date</th>
+                    <th>Last Date of Submission</th>
+                    <th>Maximum Mark</th>
+                </tr>
+                {% for row in data['assign']%}
+                <tbody>
+                    <td>{{row['NAME']}}</td>
+                    <td>{{row['title']}}</td>
+                    <td>{{row['description']}}</td>
+                    <td>{{row['ass_date']}}</td>
+                    <td>{{row['last_date_sub']}}</td>
+                    <td>{{row['max_mark']}}</td>
+                    <td>
+                        <!-- <a href="/teacher/teachviewsub?id={{row['assin_id']}}" class="btn btn-primary">View Submission</a>
+                        <a href="/teacher/teachsendcomments?id={{row['assin_id']}}" class="btn btn-primary">Send Comments</a>
+                        <a href="/teacher/teachmarkawarded?id={{row['assin_id']}}" class="btn btn-primary">Marks Awarded</a> -->
+
+                        <a href="?action=update&id={{row['assignment_id']}}" class="btn btn-sm btn-info"  style="text-decoration: none; height:30px; width: 150px;">Update</a><br>
+                        <a href="?action=delete&id={{row['assignment_id']}}" class="btn btn-sm btn-danger" style="text-decoration: none; height:30px; width: 150px;">Delete</a>
+                    </td>
+                </tbody>
+                {% endfor %}
+            </table>
+        </form>
+	</body>
+{% endif %}
+<br>
+<br>
+{% include 'footer.html'%}

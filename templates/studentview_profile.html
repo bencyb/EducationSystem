@@ -1,0 +1,189 @@
+{% include 'studentheader.html'%}
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+<style type="text/css">
+        table{
+            width: 70%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+            background-color: white;
+        }
+        th{
+            width: 20%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        tr{
+            width: 50%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        td{
+            width: 60%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        input[type=text]
+        {
+            width:100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        textarea
+        {
+            width:100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        input[type=submit]
+        {
+            width: 30%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        input[type=phone]
+        {
+            width: 90%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        input[type=email]
+        {
+            width: 90%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+         input[type=date]
+        {
+            width: 90%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        </style>
+
+<body>  
+<h1 align="center">My Profile</h1><br>
+    <form method="post">
+        <center>
+    <table  align="Center">
+        {% if data['updateprt'] %}
+            <tr class="tr">
+              <th>Course Name</th>
+              <td class="td">
+                <input type="text" name="cname" value="{{data['updateprt'][0]['course_title']}}">
+              </td>
+            </tr>
+            <tr class="tr">
+              <th>First Name</th>
+              <td class="td">
+                <input type="text" name="firstname" value="{{data['updateprt'][0]['firstname']}}">
+              </td>
+            </tr>
+            <tr class="tr">
+              <th>Last Name</th>
+              <td class="td">
+                <input type="text" name="lastname"value="{{data['updateprt'][0]['lastname']}}">
+              </td>
+            </tr>
+            <tr class="tr">
+              <th>Address</th>
+              <td class="td">
+                <textarea name="address">{{data['updateprt'][0]['address']}}</textarea>
+              </td>
+            </tr>
+            <tr class="tr">
+              <th>Date of Birth</th>
+              <td class="td">
+                <input type="date" name="dob" value="{{data['updateprt'][0]['dob']}}">
+              </td>
+            </tr>
+            <tr class="tr">
+              <th>Email</th>
+              <td class="td">
+                <input type="email" name="email" value="{{data['updateprt'][0]['email']}}">
+              </td>
+            </tr>
+            <tr class="tr">
+              <th>Phone</th>
+              <td class="td">
+                <input type="text" name="phone"  pattern="[0-9]{10}" value="{{data['updateprt'][0]['phone']}}">
+              </td>
+            </tr>
+            <tr class="tr">
+                <td colspan="2" align="center" class="td">
+                  <input type="submit" name="update" value="EDIT" class="btn btn-primary">
+                </td>
+            </tr>
+           </table>
+           {% else %}
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Course Name</th>
+            <th>Address</th>
+            <th>dob</th>
+            <th>Email</th>
+            <th>Contact No.</th> 
+        </tr>
+        {% for row in data['my'] %}
+        <tr>
+            <td>{{row['NAME']}}</td>
+            <td>{{row['course_title']}}</td> 
+            <td>{{row['address']}}</td>
+            <td>{{row['dob']}}</td>
+            <td>{{row['email']}}</td>
+            <td>{{row['phone']}}</td> 
+            <td>
+                <a href="?action=update&id={{row['student_id']}}" class="btn btn-primary">Update</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tr>
+    </table> 
+    {% endif %}
+    </center>
+</form>
+</body>
+<br><br>
+{% include 'footer.html' %}       
+  
+
+
+
+
+			

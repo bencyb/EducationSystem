@@ -1,0 +1,152 @@
+{% include 'teacherheader.html'%}
+<br>
+<br>
+<br>
+<br>
+<style type="text/css">
+        table{
+            width: 70%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+            background-color: white;
+        }
+        th{
+            width: 20%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        tr{
+            width: 50%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        td{
+            width: 20%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        input[type=text]{
+            width: 90%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        textarea{
+            width: 90%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        input[type=date]{
+            width: 90%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+
+        }
+        input[type=submit]
+        {
+            width: 30%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        </style>
+<body>
+    <h1 align="center"><font size="10" color="blue">Task</font></h1><br>
+    <form method="post">
+         {% if data['updateprt'] %}
+            <table  align="center">
+            <tr>
+                <th>Title</th>
+                <td><input type="text" name="title" required="" placeholder="Enter Title" value="{{data['updateprt'][0]['task_title']}}"></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+            <td><textarea name="des" required="" placeholder="Enter Description"> {{data['updateprt'][0]['task_des']}}</textarea></td>
+            </tr>
+            <tr>
+                <th>Last Date of Submission</th>
+                <td><input type="date" name="sub_date" required=""  value="{{data['updateprt'][0]['task_sub_date']}}"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" name="update" value="Update"></td>
+            </tr>
+        </table>
+        {% else %}
+        <table  align="center">
+             {% if data['up'] %}
+            <tr>
+                <th>Subject Name </th>
+                <td>
+                <input type="text" name="cname" 
+                value="{{data['up'][0]['sub_name']}}" readonly=""></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td><input type="text" name="title" required="" placeholder="Enter Title"></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+            <td><textarea name="des" required="" placeholder="Enter Description"></textarea></td>
+            </tr>
+            <tr>
+                <th>Submission Date</th>
+                <td><input type="date" name="sub_date" required="" ></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" name="submit" value="submit"></td>
+            </tr>
+</table>
+<table  align="center" border="1">
+                <h1 align="center"><font size="10" color="blue">Task</font></h1>
+                <tr>
+                    <th>Teacher Name</th>
+                    <th>Subject Name</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Last Date of Submission</th>
+                </tr>
+                {% for row in data['ta']%}
+                <tbody>
+                    <td>{{row['NAME']}}</td>
+                    <td>{{row['sub_name']}}</td>
+                    <td>{{row['task_title']}}</td>
+                    <td>{{row['task_des']}}</td>
+                    <td>{{row['task_sub_date']}}</td>
+                    <td>
+                        <a href="?action=update&id={{row['task_id']}}" class="btn btn-sm btn-info"  style="text-decoration: none; height:30px; width: 150px;">Update</a><br>
+                        <a href="?action=delete&id={{row['task_id']}}" class="btn btn-sm btn-danger" style="text-decoration: none; height:30px; width: 150px;">Delete</a>
+                    </td>
+                </tbody>
+                {% endfor %}
+            </table>
+                {% endif %}
+
+    </form>
+{% include 'footer.html' %}

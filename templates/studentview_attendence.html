@@ -1,0 +1,123 @@
+{% include 'studentheader.html' %}
+<br><br><br><br><br>
+<style type="text/css">
+        table{
+            width: 70%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+            background-color: white;
+        }
+        th{
+            width: 20%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        tr{
+            width: 50%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        td{
+            width: 60%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        input[type=text]
+        {
+            width:100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        textarea
+        {
+            width:100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        input[type=submit]
+        {
+            width: 30%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        .btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
+        </style>
+        <script> 
+        function printDiv() { 
+            var divContents = document.getElementById("div_print").innerHTML; 
+            var a = window.open('', '', 'height=500, width=500'); 
+            a.document.write(divContents); 
+            a.document.close(); 
+            a.print(); 
+        } 
+    </script> 
+
+<body>	
+<h1 align="center">Attendence Details</h1><br>
+	<form method="post">
+		<center>
+    <input type="submit" value="click to Download" onclick="printDiv()"> 
+<div id="div_print" > 
+	<table border="1">
+
+		<tr>
+            <th>Student Name</th>
+            <th>Date</th>
+            <th>Attendence Status</th>
+
+        </tr>
+        </tr>
+
+        {% for row in data['at'] %}
+        <tr>
+            <td>{{row['NAME']}}</td>
+            <td>{{row['date']}}</td>
+            <td>{{row['status']}}</td>
+		</tr>
+        {% endfor %}
+		</tr>
+	</table> 
+	</center>
+</div>
+</form>
+</body>
+<br><br>
+{% include 'footer.html' %}

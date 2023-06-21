@@ -1,0 +1,9 @@
+{% include 'studentheader.html' %}
+<br><br><br><br><br><br><br><br>
+{% for row in data['stud'] %}
+<h1 align="center"><font size="20" color="blue">...Welcome {{row['firstname']}} {{row['lastname']}}...</font></h1>
+{% endfor %}
+<br>
+<br>
+<br>
+{% include 'footer.html' %}

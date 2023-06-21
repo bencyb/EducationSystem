@@ -1,0 +1,100 @@
+{% include 'studentheader.html' %}
+<br><br><br><br><br>
+<style type="text/css">
+        table{
+            width: 70%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+            background-color: white;
+        }
+        th{
+            width: 20%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        tr{
+            width: 50%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        td{
+            width: 60%;
+            padding: 12px;
+            border-radius: 4px;
+            resize: vertical;
+            color: black;
+            font-style: bold;
+            font-family:Calibri;
+            font-size: 20px;
+        }
+        input[type=text]
+        {
+            width:100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        textarea
+        {
+            width:100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        input[type=submit]
+        {
+            width: 30%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        </style>
+
+<body>	
+<h1 align="center">Exam Details</h1><br>
+	<form method="post">
+		<center>
+	<table border="1">
+		<tr>
+			<th>Course Name</th>
+			<th>Exam Title</th>
+            <th>Exam Start Date</th>
+            <th>Exam End Date</th>
+            <th>Exam Description</th>
+            <th>Exam Type</th>
+		</tr>
+		{% for row in data['ex'] %}
+		<tr>
+			<td>{{row['course_title']}}</td>
+			<td>{{row['exam_title']}}</td>
+            <td>{{row['exam_start_date']}}</td>
+            <td>{{row['exam_end_date']}}</td>
+            <td>{{row['exam_des']}}</td>
+            <td>{{row['exam_type']}}</td>
+		</tr>
+        {% endfor %}
+		</tr>
+	</table> 
+	</center>
+</form>
+</body>
+<br><br>
+{% include 'footer.html' %}
